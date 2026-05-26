@@ -1,7 +1,11 @@
-@reference "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom styles below */
 
 :root {
-  font-family: -apple-system, Roboto, sans-serif, serif;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .page {
@@ -32,7 +36,7 @@
 }
 
 .link {
-  @apply text-[#8954a8] font-bold text-base align-[5%];
+  @apply text-blue-500 font-bold text-base align-[5%];
 }
 
 .doc-link {

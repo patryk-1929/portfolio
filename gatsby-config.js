@@ -1,32 +1,30 @@
 require("dotenv").config({
-  path: `.env`,
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   siteMetadata: {
-    title: process.env.GATSBY_SITE_TITLE,
-    siteUrl: process.env.GATSBY_SITE_URL,
+    title: process.env.GATSBY_SITE_TITLE || "Domyślny tytuł",
+    description: process.env.GATSBY_SITE_DESCRIPTION || "Domyślny opis",
+    siteUrl: process.env.GATSBY_SITE_URL || "https://www.yourdomain.tld",
   },
   plugins: [
     {
       resolve: "gatsby-source-sanity",
       options: {
-        projectId: process.env.GATSBY_SANITY_PROJECT_ID,
-        dataset: process.env.GATSBY_SANITY_DATASET,
+        projectId: process.env.SANITY_PROJECT_ID || "q46bplag",
+        dataset: process.env.SANITY_DATASET || "production",
       },
     },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-postcss",
+    "gatsby-plugin-postcss", // To wystarczy - nie potrzebuje dodatkowych opcji
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
         trackingIds: [
-          process.env.GATSBY_GTAG_ID,
+          process.env.GATSBY_GTM_ID || "GTM-KHPJQHND"
         ],
       },
     },
@@ -45,5 +43,6 @@ module.exports = {
       },
       __key: "images",
     },
+    
   ],
 }
