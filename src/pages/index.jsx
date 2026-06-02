@@ -40,18 +40,18 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage
 
-export const query = graphql`
+// export const query = graphql`
     
-  query data {
-      sanityTitle {
-          name
-          title
-      }
-      sanityAboutMe {
-          title
-          description
-      }
-  }
-`;
+//   query data {
+//       sanityTitle {
+//           name
+//           title
+//       }
+//       sanityAboutMe {
+//           title
+//           description
+//       }
+//   }
+// `;
 
 export const Head = () => <title>Home Page</title>
