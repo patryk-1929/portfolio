@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import Nav from "./Nav";
-import hamburger from "../assets/NavBar.png";
+import Nav from './Nav'
+import hamburgerImg from '../assets/images/NavBar.png'
+import closeImg from '../assets/images/Close.png'
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const headerRef = useRef(null);
   const [isSticky, setIsSticky] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateHeaderHeight = () => {
@@ -35,27 +38,51 @@ export default function Header() {
     };
   }, [headerHeight]);
 
+  function setMobileMenuState () {
+    setMobileMenuOpen(prevState => !prevState);
+
+    const body = document.body;
+
+    if (!mobileMenuOpen) {
+      body.style.overflowY = 'hidden'
+    }
+    else {
+      body.style.overflowY = 'auto'
+    }
+  }
+
+  function closeMobileMenu() {
+    setMobileMenuOpen(false);
+  }
+
   return (
     <div className="bg-mainDark text-accent">
       <header
         ref={headerRef}
-        className={`w-full bg-mainDark border-b border-slate-200 transition-all duration-300 text-[10px] ${
-          isSticky
+        className={`w-full bg-mainDark border-b border-slate-600 transition-all duration-300 text-[10px] 
+        ${isSticky
             ? "fixed top-0 left-0 z-50 shadow-lg animate-[slideDown_0.25s_ease-out]"
             : "relative"
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
           <div>
-            <p className="{text-[24px]} md:text-[32px] font-IBMPlex font-medium text-white" >
-                <span className="text-accent pr-2">
-                    {'</>'}
-                </span>
+            <p className="text-[24px] md:text-[32px] font-IBMPlex font-medium text-white">
+              <span className="text-accent pr-2">{'</>'}</span>
               Patryk
             </p>
           </div>
-<img src={hamburger} />
-          <Nav />
+          {/* Desktop Menu */}
+          <div className="hidden md:flex ">
+            <Nav type={'desktop'} />
+          </div>
+          {/* Mobile Menu */}
+          <button type="button" onClick={setMobileMenuState} className="md:hidden">
+            <span className="sr-only">Toggle mobile menu</span>
+            <img src={hamburgerImg} alt="Open mobile menu button" width={40} height={40} className={mobileMenuOpen ? 'hidden' : 'block'}/>
+            <img src={closeImg} alt="Close mobile menu button" width={40} height={40} className={mobileMenuOpen ? 'block' : 'hidden'}/>
+          </button>
+          <MobileMenu state={mobileMenuOpen} closeMobileMenu={closeMobileMenu} />
         </div>
       </header>
 

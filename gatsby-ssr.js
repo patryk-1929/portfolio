@@ -1,4 +1,3 @@
-import "./src/styles/global.css"
 import React from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
