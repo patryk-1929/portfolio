@@ -5,7 +5,7 @@ import cssLogo from '../assets/images/CSS.svg'
 import jsLogo from '../assets/images/JS.svg'
 import reactLogo from '../assets/images/React.svg'
 
-export default function Skills() {
+export default function Skills({data}) {
   return (
     <div id="skills"
          className="bg-cover bg-center bg-no-repeat"
@@ -20,23 +20,14 @@ export default function Skills() {
             I am striving to never stop learning and improving
           </p>
           <div className="mt-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-16">
-              <div className="flex flex-col justify--center gap-4 text-center transition duration-300 hover:grayscale">
-                <img src={HTMLLogo}/>
-                <span className="font-light tracking-widest">HTML</span>
-              </div>
-              <div className="flex flex-col justify--center gap-4 text-center transition duration-300 hover:grayscale">
-                <img src={cssLogo}/>
-                <span className="font-light tracking-widest">CSS</span>
-              </div>
-              <div className="flex flex-col justify--center gap-4 text-center transition duration-300 hover:grayscale">
-                <img src={jsLogo}/>
-                <span className="font-light tracking-widest">JavaScript</span>
-              </div>
-              <div className="flex flex-col justify--center gap-4 text-center transition duration-300 hover:grayscale">
-                <img src={reactLogo}/>
-                <span className="font-light tracking-widest">React</span>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-16"> 
+{data.skills && data.skills.map((skill, index) => (
+                  <div key={index}className="flex flex-col justify--center gap-4 text-center transition duration-300 hover:grayscale">
+                    <img src={skill.imageIcon.asset.url} alt={skill.title}/>
+                    <span className="font-light tracking-widest">{skill.title}</span>
+                  </div>
+                ))}
+
             </div>
           </div>
         </div>

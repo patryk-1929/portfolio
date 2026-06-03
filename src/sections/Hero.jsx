@@ -4,16 +4,16 @@ import emailRoundedButton from '../assets/images/EmailRoundedButton.png';
 import download from '../assets/images/download.png';
 import cvFile from '../assets/sample.pdf'
 
-export default function Hero() {
-  const emailAddress = 'test@test.pl';
+export default function Hero({data, skills}) {
+  const emailAddress = data.email;
   return (
     <>
       <div className="max-w-7xl mx-auto mt-[64px] md:mt-[15dvh] p-6 grid md:grid-cols-[1fr_2fr] gap-[5vw]">
         <div className="hero-left-container flex justify-center border border-solid border-white rounded-tl-[160px] rounded-br-[160px]">
           <div className="p-10 md:p-16 text-IBMPlex text-center">
             <img src={profilePhoto} alt="" className="w-[100px] md:w-[150px] mx-auto"/>
-            <p className="text-[32px] font-IBMPlex">Patryk</p>
-            <p className="text-[14px] pb-8">Front-end developer</p>
+            <p className="text-[32px] font-IBMPlex">{data.name}</p>
+            <p className="text-[14px] pb-8">{data.title}</p>
             <div className="flex flex-col text-left gap-y-6 font-IBMPlex text-[14px]">
               <div>
                 <span className="block">
@@ -21,13 +21,18 @@ export default function Hero() {
                     {emailAddress}
                   </a>
                 </span>
-                <a href="http://patrykruszkiewicz.pl/" target="_blanks" className="block">http://patrykruszkiewicz.pl/</a>
+                <a href= {data.website} target="_blanks" className="block">{data.website}</a>
               </div>
+              
               <div className="flex gap-4">
-                <span className="w-full text-center p-1 bg-accent text-mainDark rounded-[8px]">HTML</span>
-                <span className="w-full text-center p-1 bg-accent text-mainDark rounded-[8px]">CSS</span>
-                <span className="w-full text-center p-1 bg-accent text-mainDark rounded-[8px]">JS</span>
-                <span className="w-full text-center p-1 bg-accent text-mainDark rounded-[8px]">React</span>
+               
+                {skills.skills && skills.skills.map((skill, index) => (
+                  <div key={index} 
+className="w-full text-center p-1 bg-accent text-mainDark rounded-[8px]">
+                    {/* <img src={skill.imageIcon.asset.url} alt={skill.title} className="w-[20px]"/> */}
+                    <span>{skill.title}</span>
+                  </div>
+                ))}
               </div>
               <div className="">
                 <a href={cvFile} className="flex justify-center items-end bg-white text-mainDark rounded-full p-2 gap-2">
@@ -45,16 +50,16 @@ export default function Hero() {
               Hey
             </span>
             <span className="block">
-              I'm <span className="text-accent">Patryk</span>
+              I'm <span className="text-accent">{data.name}</span>
             </span>
-            <span className="inline-block ">Front-end developer</span>
+            <span className="inline-block ">{data.title}</span>
           </h1>
           <span className="inline-block text-accent font-IBMPlex">{`</h1>`}</span>
             <div className="my-4">
               <span className="block text-accent font-IBMPlex text-[14px] leading-normal">{`<p>`}</span>
               <p className="text-4 inline-block leading-normal">
                 <span className="block pl-8">
-                  I help business grow by crafting amazing web experiences. If you’re looking for a developer that likes to get stuff done,
+                  {data.description}
                 </span>
               </p>
               <span className="inline-block text-accent font-IBMPlex text-[14px]">{`</p>`}</span>

@@ -2,7 +2,7 @@ import React from "react";
 import bgImage from '../assets/images/AboutBg.png'
 import aboutImg from '../assets/images/AboutImage.png'
 
-export default function About() {
+export default function About({data}) {
   return (
     <div id='about' className="bg-cover bg-center bg-no-repeat"
          style={{
@@ -16,12 +16,9 @@ export default function About() {
           <div className="mt-4 bg-mainDark py-4 px-6 rounded-[40px]">
             <span className="block text-accent font-IBMPlex text-[14px] leading-normal py-4">{`<p>`}</span>
             <span className="text-4 inline-block leading-normal font-IBMPlex">
-                <h3 className="text-accent text-[24px]">Hello</h3>
+                <h3 className="text-accent text-[24px]">{data.title}</h3>
                 <span className="block">
-                  My name is Sinan and I specialize in web developement that utilizes HTML, CSS, JS, and REACT etc.
-                  I am a highly motivated individual and eternal optimist dedicated to writing clear, concise, robust code that works. Striving to never stop learning and improving.
-                  When I'm not coding, I am writing bolgs, reading, or picking up some new hands-on art project like photography.
-                  I like to have my perspective and belief systems challenged so that I see the world through new eyes.
+                  {data.description}
                 </span>
             </span>
             <span className="inline-block text-accent font-IBMPlex text-[14px] py-4">{`</p>`}</span>

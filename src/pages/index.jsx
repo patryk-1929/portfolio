@@ -18,20 +18,12 @@ const IndexPage = ({ data }) => {
     <>
       <Header />
       <main className="page">
-        {/*<h1 className="mt-0 mb-[64px] max-w-[320px]">*/}
-        {/*  Hello, my name is {data.sanityTitle.name}*/}
-        {/*  <span className="block">{data.sanityTitle.title}</span>*/}
-        {/*</h1>*/}
+    
 
-        {/*<div>*/}
-        {/*  <h2>{data.sanityAboutMe.title}</h2>*/}
-        {/*  <p dangerouslySetInnerHTML={{ __html: data.sanityAboutMe.description }} />*/}
-        {/*</div>*/}
-
-        <Hero />
+        <Hero data={data.sanityHero} skills ={data.sanitySkills}/>
       </main>
-      <About />
-      <Skills />
+      <About  data={data.sanityAboutMe}/>
+      <Skills data={data.sanitySkills}/>
       <Works />
       <Contact />
     </>
@@ -40,18 +32,29 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage
 
-// export const query = graphql`
+export const query = graphql`
     
-//   query data {
-//       sanityTitle {
-//           name
-//           title
-//       }
-//       sanityAboutMe {
-//           title
-//           description
-//       }
-//   }
-// `;
+  query data {
+      sanityHero {
+          name
+          title
+          description
+      }
+      sanityAboutMe {
+          title
+          description
+      }
+            sanitySkills {
+    skills {
+      title
+      imageIcon {
+        asset {
+          url
+        }
+      }
+    }
+  }
+  }
+`;
 
 export const Head = () => <title>Home Page</title>
