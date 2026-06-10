@@ -16,6 +16,7 @@ export default function Hero({data, skills}) {
             <p className="text-[14px] pb-8">{data.title}</p>
             <div className="flex flex-col text-left gap-y-6 font-IBMPlex text-[14px]">
               <div>
+                {JSON.stringify(data)}
                 <span className="block">
                   <a href={`mailto:${emailAddress}`}>
                     {emailAddress}

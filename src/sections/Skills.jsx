@@ -20,7 +20,7 @@ export default function Skills({data}) {
             I am striving to never stop learning and improving
           </p>
           <div className="mt-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-16"> 
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-16"> 
 {data.skills && data.skills.map((skill, index) => (
                   <div key={index}className="flex flex-col justify--center gap-4 text-center transition duration-300 hover:grayscale">
                     <img src={skill.imageIcon.asset.url} alt={skill.title}/>

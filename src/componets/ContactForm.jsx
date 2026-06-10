@@ -98,7 +98,6 @@ const ContactForm = () => {
         "g-recaptcha-response": token,
         params: {
           name: form.name.trim(),
-          email: form.email.trim(),
           message: form.message.trim(),
         },
       };
@@ -116,6 +115,7 @@ const ContactForm = () => {
         headers: {
           "X-API-KEY": process.env.GATSBY_CBP_API_KEY,
           "Content-Type": "application/json",
+          "Api-Version": "v1",
         },
         body: JSON.stringify(body),
       });

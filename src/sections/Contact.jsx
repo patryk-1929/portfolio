@@ -13,8 +13,12 @@ export default function Contact() {
             Works
           </h2>
           <p className="text-center font-IBMPlex text-[14px] my-4">
-            I had the pleasure of working with these awesome projects
+                        I’m currently available for freelance work
+
           </p>
+<div className="flex justify-center border border-solid border-accent rounded-tl-[32px] rounded-br-[32px] w-fit mx-auto my-10 py-4 px-10 text-accent text-[18px]">
+Send me a message
+</div>
           <div className="">
             <ContactForm />
           </div>
