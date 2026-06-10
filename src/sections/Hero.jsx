@@ -2,7 +2,7 @@ import React from "react";
 import profilePhoto from '../assets/images/ProfilePhoto.png'
 import emailRoundedButton from '../assets/images/EmailRoundedButton.png';
 import download from '../assets/images/download.png';
-import cvFile from '../assets/sample.pdf'
+import cvFile from '../assets/sample.pdf' 
 
 export default function Hero({data, skills}) {
   const emailAddress = data.email;
@@ -16,7 +16,7 @@ export default function Hero({data, skills}) {
             <p className="text-[14px] pb-8">{data.title}</p>
             <div className="flex flex-col text-left gap-y-6 font-IBMPlex text-[14px]">
               <div>
-                {JSON.stringify(data)}
+                
                 <span className="block">
                   <a href={`mailto:${emailAddress}`}>
                     {emailAddress}
